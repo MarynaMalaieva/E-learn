@@ -7,6 +7,7 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
 import {HttpClientModule} from "@angular/common/http";
 import { FeedComponent } from './components/feed/feed.component';
 import { LessonCardComponent } from './components/lesson-card/lesson-card.component';
+import { CoursePageComponent } from './components/course-page/course-page.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { LessonCardComponent } from './components/lesson-card/lesson-card.compon
     CourseCardComponent,
     FeedComponent,
     LessonCardComponent,
+    CoursePageComponent,
   ],
   imports: [
     BrowserModule,

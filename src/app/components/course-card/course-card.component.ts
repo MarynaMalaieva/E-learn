@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Course} from "../../models/rest.model";
+import {RestService} from "../../services/rest.service";
 
 @Component({
   selector: 'app-course-card',
@@ -9,7 +10,13 @@ import {Course} from "../../models/rest.model";
 export class CourseCardComponent {
     @Input() public course: Course | undefined;
 
+
+    constructor(public r: RestService) {
+    }
+
     onCardClick() {
-        console.log("DOOOOONNNEEEEE      "+this.course?.title)
+        this.course?.id && this.r.getCourse(this.course.id).subscribe(r => {
+            console.log(">>> RES: ", r)
+        })
     }
 }
