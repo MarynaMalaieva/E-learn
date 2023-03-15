@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Course} from "../../models/rest.model";
 import {RestService} from "../../services/rest.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-course-card',
@@ -11,12 +12,10 @@ export class CourseCardComponent {
     @Input() public course: Course | undefined;
 
 
-    constructor(public r: RestService) {
+    constructor(private router: Router) {
     }
 
     onCardClick() {
-        this.course?.id && this.r.getCourse(this.course.id).subscribe(r => {
-            console.log(">>> RES: ", r)
-        })
+        this.router.navigate(['course/'+this.course?.id]);
     }
 }
