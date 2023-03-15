@@ -1,0 +1,9 @@
+
+<div>
+    <div *ngIf="courses$ | async as courses" class="cards">
+        <app-course-card *ngFor="let course of courses.courses"
+                         [course]='course'
+        >
+        </app-course-card>
+    </div>
+</div>

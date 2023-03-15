@@ -62,16 +62,14 @@
                     "options": {
                         "browserTarget": "E-learn:build",
                         "port": 80,
-                        "disableHostCheck": true
+                        "proxyConfig": "src/proxy.conf.json"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "E-learn:build:production",
-                            "proxyConfig": "src/proxy.conf.json"
+                            "browserTarget": "E-learn:build:production"
                         },
                         "development": {
-                            "browserTarget": "E-learn:build:development",
-                            "proxyConfig": "src/proxy.conf.json"
+                            "browserTarget": "E-learn:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
