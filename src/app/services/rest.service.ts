@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Auth} from "../utils/auth.utils";
-import {Courses} from "../models/rest.model";
+import {Courses, ExtendedCourse} from "../models/rest.model";
 
 const COURSES_URL = "/api/v1/core/preview-courses"
 const COURSE_URL = "/api/v1/core/preview-courses/"
@@ -21,7 +21,8 @@ export class RestService {
         return this.httpClient.get<Courses>(COURSES_URL, {headers: this.headers});
     }
 
-    public getCourse(courseId: string): Observable<any> {
-        return this.httpClient.get(COURSE_URL + courseId, {headers: this.headers})
+    public getCourseById(courseId: string): Observable<ExtendedCourse> {
+        return this.httpClient.get<ExtendedCourse>(COURSE_URL + courseId, {headers: this.headers})
     }
 }
+

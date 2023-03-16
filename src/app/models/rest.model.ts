@@ -1,4 +1,34 @@
 export interface ExtendedCourse {
+    id: string,
+    title: string,
+    tags: string[],
+    launchDate: string,
+    status: string,
+    description: string,
+    duration: number,
+    previewImageLink: string,
+    rating: number,
+    lessons: Lesson[],
+    meta: {
+        slug: string,
+        skills: string[],
+        courseVideoPreview: {
+            link: string,
+            duration: number,
+            previewImageLink: string
+        }
+    }
+}
+
+export interface Lesson {
+    id: string,
+    title: string,
+    duration: number,
+    order: number,
+    type: string,
+    status: string,
+    link: string,
+    previewImageLink: string,
 }
 
 export interface Course {

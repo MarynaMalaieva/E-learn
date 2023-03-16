@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Course} from "../../models/rest.model";
+import {Course, Lesson} from "../../models/rest.model";
 
 @Component({
   selector: 'app-lesson-card',
@@ -7,9 +7,9 @@ import {Course} from "../../models/rest.model";
   styleUrls: ['./lesson-card.component.less']
 })
 export class LessonCardComponent {
-    @Input() public course: Course | undefined;
+    @Input() public lesson: Lesson | undefined;
 
     onCardClick() {
-        console.log("DOOOOONNNEEEEE      "+this.course?.title)
+        console.log("DOOOOONNNEEEEE      "+this.lesson?.title)
     }
 }

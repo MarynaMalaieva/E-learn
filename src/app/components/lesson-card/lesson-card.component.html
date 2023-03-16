@@ -1,10 +1,10 @@
 <div class="lesson-card" (click)="onCardClick()">
 
     <div class="content">
-        <img class="lesson-preview" src="assets/icons/star.png" alt="">
+        <img class="lesson-preview" src="{{lesson?.previewImageLink + '/lesson-' + lesson?.order + '.webp'}}" alt="">
         <div class="lesson-card-info">
-            <div class="lessons-order">"1"</div>
-            <div class="lesson-title">"TITLE"</div>
+            <div class="lessons-order">{{lesson?.order}}</div>
+            <div class="lesson-title">{{lesson?.title}}</div>
         </div>
     </div>
 

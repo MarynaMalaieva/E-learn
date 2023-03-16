@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
 import {Course} from "../../models/rest.model";
-import {RestService} from "../../services/rest.service";
 import {Router} from "@angular/router";
 
 @Component({
