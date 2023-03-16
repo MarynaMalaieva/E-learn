@@ -8,6 +8,9 @@ import {FeedComponent} from './components/feed/feed.component';
 import {LessonCardComponent} from './components/lesson-card/lesson-card.component';
 import {CoursePageComponent} from './components/course-page/course-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import {MatDialogModule} from "@angular/material/dialog";
+import { PopUpComponent } from './components/pop-up/pop-up.component';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
     declarations: [
@@ -16,12 +19,15 @@ import { AppRoutingModule } from './app-routing.module';
         FeedComponent,
         LessonCardComponent,
         CoursePageComponent,
+        PopUpComponent,
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        MatDialogModule,
+        MatIconModule
     ],
     providers: [],
     bootstrap: [AppComponent]
