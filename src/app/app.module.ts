@@ -11,6 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import {MatDialogModule} from "@angular/material/dialog";
 import { PopUpComponent } from './components/pop-up/pop-up.component';
 import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
     declarations: [
@@ -27,7 +30,10 @@ import {MatIconModule} from "@angular/material/icon";
         HttpClientModule,
         AppRoutingModule,
         MatDialogModule,
-        MatIconModule
+        MatIconModule,
+        MatButtonModule,
+        MatTooltipModule,
+        MatPaginatorModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

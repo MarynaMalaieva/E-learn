@@ -1,10 +1,17 @@
 <div class="pop-up">
    <div class="video-lesson">
-
-       
+       <video #videoLesson controls autoplay playsinline></video>
    </div>
-    <button class="close-button">
-        <mat-icon aria-hidden="false" aria-label="Example close icon" fontIcon="close"></mat-icon>
+    <button mat-button  class="close-icon" [mat-dialog-close]="true">
+        <mat-icon >close</mat-icon>
     </button>
+<!--  ICON aria-hidden="false" aria-label="Example close icon" fontIcon="close"-->
+<!--    <video width="320" height="240" controls>-->
+<!--        <source src="https://wisey.app/videos/lack-of-motivation-how-to-overcome-it/lesson-1/AppleHLS1/lesson-1.m3u8" type="application/x-mpegURL">-->
+<!--        Your browser does not support the video tag.-->
+<!--    </video>-->
+<!--    <video width="640" height="360" controls>-->
+<!--        <source src="https://wisey.app/videos/lack-of-motivation-how-to-overcome-it/lesson-1/AppleHLS1/lesson-1.m3u8" type="application/x-mpegURL">-->
+<!--    </video>-->
 </div>
 

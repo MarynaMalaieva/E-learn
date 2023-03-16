@@ -2,6 +2,8 @@ import {Component, Input} from '@angular/core';
 import {Course, Lesson} from "../../models/rest.model";
 import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {PopUpComponent} from "../pop-up/pop-up.component";
+import {FormControl} from '@angular/forms';
+import {TooltipPosition} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-lesson-card',
