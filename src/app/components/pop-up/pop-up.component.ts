@@ -29,26 +29,31 @@ export class PopUpComponent implements AfterViewInit {
         if (this.data.lesson.link) {
             const hls = new Hls();
             let courseLessonsProgress = this.getLessonsProgress();
-            this.setCurrentTime(courseLessonsProgress[this.data.courseId][this.data.lesson?.id]);
+            const oldLessonTime = courseLessonsProgress[this.data.courseId]
+                && courseLessonsProgress[this.data.courseId][this.data.lesson?.id]
+            oldLessonTime && this.setCurrentTime(oldLessonTime);
             hls.loadSource(this.data.lesson.link);
             hls.attachMedia(this.video);
             hls.on(Hls.Events.MANIFEST_PARSED, () => {
                 this.video.play();
             });
             setInterval(() => {
-
+                courseLessonsProgress[this.data.courseId] = courseLessonsProgress[this.data.courseId] || {};
+                courseLessonsProgress[this.data.courseId][this.data.lesson?.id] = this.getCurrentTime()
+                this.setLessonsProgress(courseLessonsProgress)
 
                 console.log('works')
             }, 5000)
         }
     }
 
-    getCurrentTime(): number {
+    public getCurrentTime(): number {
         console.log(">>> TIME: ", this.video.currentTime);
         console.log(this.data)
         return this.video.currentTime
     }
-    setCurrentTime(currentTime: number) {
+
+    public setCurrentTime(currentTime: number) {
         this.video.currentTime = currentTime
     }
 
@@ -57,8 +62,8 @@ export class PopUpComponent implements AfterViewInit {
         return dataFromLocalStorage ? JSON.parse(dataFromLocalStorage) : {};
     }
 
-    public setTimeFromLocalStorage() {
-        localStorage.setItem(LESSONS_PROGRESS, "")
+    public setLessonsProgress(courseLessonProgress: CourseLessonProgress) {
+        localStorage.setItem(LESSONS_PROGRESS, JSON.stringify(courseLessonProgress))
     }
 
 
