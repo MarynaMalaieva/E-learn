@@ -1,14 +1,16 @@
 <div>
     <div *ngIf="courses$ | async as courses" class="cards">
-        <app-course-card *ngFor="let course of courses.courses.slice(currentPage*10, (currentPage+1)*10)"
-                         [course]='course'
-        >
-
-        </app-course-card>
+        <div class="cards-wrapper">
+            <app-course-card *ngFor="let course of courses.courses.slice(currentPage*10, (currentPage+1)*10)"
+                             class="card"
+                             [course]='course'
+            >
+            </app-course-card>
+        </div>
         <mat-paginator [length]="courses?.courses?.length"
                        [pageSize]="10"
                        (page)="currentPage = $event.pageIndex"
-                       class="mat-paginator">
+                       class="mat-paginator paginator">
         </mat-paginator>
     </div>
 

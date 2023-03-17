@@ -5,7 +5,7 @@ import {MatPaginator} from "@angular/material/paginator";
 @Component({
     selector: 'app-feed',
     templateUrl: './feed.component.html',
-    styleUrls: ['./feed.component.css']
+    styleUrls: ['./feed.component.less']
 })
 export class FeedComponent {
     public currentPage = 0;
