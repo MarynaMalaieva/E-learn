@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Course, Lesson} from "../../models/rest.model";
+import {Course, ExtendedCourse, Lesson} from "../../models/rest.model";
 import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {PopUpComponent} from "../pop-up/pop-up.component";
 import {FormControl} from '@angular/forms';
@@ -12,6 +12,7 @@ import {TooltipPosition} from '@angular/material/tooltip';
 })
 export class LessonCardComponent {
     @Input() public lesson: Lesson | undefined;
+    @Input() public courseId: string | undefined | null;
 
     constructor(private dialogRef: MatDialog) {
     }
@@ -19,7 +20,10 @@ export class LessonCardComponent {
     onLessonClick() {
         if (this.lesson?.status === 'unlocked') {
             this.dialogRef.open(PopUpComponent, {
-                data: this.lesson,
+                data: {
+                    lesson: this.lesson,
+                    courseId: this.courseId
+                },
             });
         } else {
             console.log('This lesson is ' + this.lesson?.status)

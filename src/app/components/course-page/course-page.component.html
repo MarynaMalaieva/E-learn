@@ -8,6 +8,7 @@
     </div>
     <app-lesson-card *ngFor="let lesson of course.lessons"
                      [lesson]='lesson'
+                     [courseId]='courseId'
     >
     </app-lesson-card>
 </div>
