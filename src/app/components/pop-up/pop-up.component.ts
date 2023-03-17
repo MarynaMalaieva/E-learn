@@ -1,21 +1,33 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import Hls from 'hls.js';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Lesson} from "../../models/rest.model";
+
 
 @Component({
     selector: 'app-pop-up',
     templateUrl: './pop-up.component.html',
-    styleUrls: ['./pop-up.component.css']
+    styleUrls: ['./pop-up.component.less']
 })
 export class PopUpComponent implements AfterViewInit {
     @ViewChild('videoLesson') public videoLesson: ElementRef | undefined;
+    private video: any;
+
+    constructor(@Inject(MAT_DIALOG_DATA) public data: Lesson) {
+    }
 
     ngAfterViewInit(): void {
-        const video = this.videoLesson?.nativeElement;
+        this.video = this.videoLesson?.nativeElement;
         const hls = new Hls();
-        hls.loadSource('https://wisey.app/videos/lack-of-motivation-how-to-overcome-it/lesson-1/AppleHLS1/lesson-1.m3u8');
-        hls.attachMedia(video);
+        hls.loadSource(this.data.link);
+        hls.attachMedia(this.video);
         hls.on(Hls.Events.MANIFEST_PARSED, () => {
-            video.play();
+            this.video.play();
         });
+    }
+
+    getCurrentTime() {
+        console.log(">>> TIME: ", this.video.currentTime);
+        console.log(this.data)
     }
 }

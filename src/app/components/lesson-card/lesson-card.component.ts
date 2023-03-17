@@ -6,19 +6,23 @@ import {FormControl} from '@angular/forms';
 import {TooltipPosition} from '@angular/material/tooltip';
 
 @Component({
-  selector: 'app-lesson-card',
-  templateUrl: './lesson-card.component.html',
-  styleUrls: ['./lesson-card.component.less']
+    selector: 'app-lesson-card',
+    templateUrl: './lesson-card.component.html',
+    styleUrls: ['./lesson-card.component.less']
 })
 export class LessonCardComponent {
     @Input() public lesson: Lesson | undefined;
-    constructor(private dialogRef: MatDialog) {}
+
+    constructor(private dialogRef: MatDialog) {
+    }
 
     onLessonClick() {
         if (this.lesson?.status === 'unlocked') {
-            this.dialogRef.open(PopUpComponent);
+            this.dialogRef.open(PopUpComponent, {
+                data: this.lesson,
+            });
         } else {
-            console.log('This lesson is ' +this.lesson?.status)
+            console.log('This lesson is ' + this.lesson?.status)
         }
     }
 }

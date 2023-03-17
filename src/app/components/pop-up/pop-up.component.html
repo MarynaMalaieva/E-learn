@@ -1,10 +1,11 @@
 <div class="pop-up">
-   <div class="video-lesson">
-       <video #videoLesson controls autoplay playsinline></video>
+   <div class="video-lesson-wrapper">
+       <video class="video-lesson" #videoLesson controls autoplay playsinline></video>
    </div>
     <button mat-button  class="close-icon" [mat-dialog-close]="true">
         <mat-icon >close</mat-icon>
     </button>
+    <button (click)="getCurrentTime()">GetTime</button>
 <!--  ICON aria-hidden="false" aria-label="Example close icon" fontIcon="close"-->
 <!--    <video width="320" height="240" controls>-->
 <!--        <source src="https://wisey.app/videos/lack-of-motivation-how-to-overcome-it/lesson-1/AppleHLS1/lesson-1.m3u8" type="application/x-mpegURL">-->
