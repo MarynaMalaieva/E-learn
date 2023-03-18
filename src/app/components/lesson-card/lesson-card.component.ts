@@ -1,9 +1,10 @@
-import {Component, Input} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {Course, ExtendedCourse, Lesson} from "../../models/rest.model";
 import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {PopUpComponent} from "../pop-up/pop-up.component";
 import {FormControl} from '@angular/forms';
 import {TooltipPosition} from '@angular/material/tooltip';
+import Hls from "hls.js";
 
 @Component({
     selector: 'app-lesson-card',
@@ -17,7 +18,7 @@ export class LessonCardComponent {
     constructor(private dialogRef: MatDialog) {
     }
 
-    onLessonClick() {
+    public onLessonClick() {
         if (this.lesson?.status === 'unlocked') {
             this.dialogRef.open(PopUpComponent, {
                 data: {

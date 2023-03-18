@@ -1,6 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {Course} from "../../models/rest.model";
 import {Router} from "@angular/router";
+import Hls from "hls.js";
 
 @Component({
   selector: 'app-course-card',
@@ -9,7 +10,6 @@ import {Router} from "@angular/router";
 })
 export class CourseCardComponent {
     @Input() public course: Course | undefined;
-
 
     constructor(private router: Router) {
     }

@@ -1,12 +1,11 @@
-<div *ngIf="course$ | async as course" class="course-page">
+<div class="course-page">
     <div class="course-header" >
-        <div>{{course.title}}</div>
-        <div>{{course.meta.slug}}</div>
-        <div>{{course.description}}</div>
-        <div>{{course.launchDate}}</div>
-        <img src="{{course.previewImageLink+ '/cover.webp'}}" alt="">
+        <div>{{_course?.title}}</div>
+        <div>{{_course?.meta?.slug}}</div>
+        <div>{{_course?.description}}</div>
+        <video class="video-lesson" #videoLesson controls autoplay playsinline></video>
     </div>
-    <app-lesson-card *ngFor="let lesson of course.lessons"
+    <app-lesson-card *ngFor="let lesson of _course?.lessons"
                      [lesson]='lesson'
                      [courseId]='courseId'
     >
