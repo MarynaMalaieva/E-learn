@@ -1,7 +1,8 @@
-<div class="course-card" (click)="onCardClick()">
+<div class="course-card" (click)="onCardClick()" (mouseenter)="hover = true" (mouseleave)="hover = false">
     <div class="course-title">{{course?.title}}</div>
     <div class="content">
-        <img class="course-preview" src="{{course?.previewImageLink+'/cover.webp'}}" alt="">
+        <img *ngIf="!hover" class="course-preview" src="{{course?.previewImageLink+'/cover.webp'}}" alt="">
+
         <div class="course-card-info">
             <div class="lessons-count">{{'Number of lessons: '+course?.lessonsCount}}</div>
             <div class="skills">

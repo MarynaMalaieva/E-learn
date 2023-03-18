@@ -10,6 +10,7 @@ import Hls from "hls.js";
 })
 export class CourseCardComponent {
     @Input() public course: Course | undefined;
+    public hover = false;
 
     constructor(private router: Router) {
     }

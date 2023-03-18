@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, Inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import Hls from 'hls.js';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Lesson} from "../../models/rest.model";
@@ -19,14 +19,17 @@ const LESSONS_PROGRESS = "lessonsProgress"
 })
 export class PopUpComponent implements AfterViewInit, OnDestroy {
     @ViewChild('videoLesson') public videoLesson: ElementRef | undefined;
-    private video: any;
+    public video: any;
     private timer: number | undefined;
     private hls: Hls | undefined;
+    private minVideoSpeed = 0.25;
+    private maxVideoSpeed = 2;
+    private videoSpeedStep = 0.25;
 
     constructor(@Inject(MAT_DIALOG_DATA) public data: { lesson: Lesson, courseId: string }) {
     }
 
-    ngAfterViewInit(): void {
+    public ngAfterViewInit(): void {
         this.video = this.videoLesson?.nativeElement;
         if (this.data.lesson.link) {
             this.hls = new Hls();
@@ -52,6 +55,17 @@ export class PopUpComponent implements AfterViewInit, OnDestroy {
         this.hls?.stopLoad();
     }
 
+    @HostListener('window:keydown', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent) {
+        if (this.video) {
+            if (event.key === "4" && this.video.playbackRate > 0.25) {
+                this.video.playbackRate -= 0.25;
+            }
+            if (event.key === "6" && this.video.playbackRate < 2) {
+                this.video.playbackRate += 0.25;
+            }
+        }
+    }
 
 
     public getCurrentTime(): number {

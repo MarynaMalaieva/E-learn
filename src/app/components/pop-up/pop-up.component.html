@@ -6,6 +6,9 @@
     <button mat-button  class="close-icon" [mat-dialog-close]="true">
         <mat-icon >close</mat-icon>
     </button>
+    <div>
+        Current speed: {{video?.playbackRate}}
+    </div>
     <button (click)="getCurrentTime()">GetTime</button>
 </div>
 
