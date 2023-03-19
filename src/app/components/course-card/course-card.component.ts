@@ -1,8 +1,7 @@
-import {AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, ViewChild} from '@angular/core';
 import {Course} from "../../models/rest.model";
 import {Router} from "@angular/router";
 import Hls from "hls.js";
-import {Subscription} from "rxjs";
 
 @Component({
     selector: 'app-course-card',

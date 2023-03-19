@@ -1,8 +1,7 @@
-import {AfterViewInit, Component, ElementRef, HostListener, Inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, Inject, OnDestroy, ViewChild} from '@angular/core';
 import Hls from 'hls.js';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Lesson} from "../../models/rest.model";
-
 
 interface CourseLessonProgress {
     [key: string]: {
@@ -53,13 +52,13 @@ export class PopUpComponent implements AfterViewInit, OnDestroy {
     }
 
     @HostListener('window:keydown', ['$event'])
-    handleKeyboardEvent(event: KeyboardEvent) {
+    public handleKeyboardEvent(event: KeyboardEvent) {
         if (this.video) {
-            if (event.key === "4" && this.video.playbackRate > 0.25) {
-                this.video.playbackRate -= 0.25;
+            if (event.key === "4" && this.video.playbackRate > this.minVideoSpeed) {
+                this.video.playbackRate -= this.videoSpeedStep;
             }
-            if (event.key === "6" && this.video.playbackRate < 2) {
-                this.video.playbackRate += 0.25;
+            if (event.key === "6" && this.video.playbackRate < this.maxVideoSpeed) {
+                this.video.playbackRate += this.videoSpeedStep;
             }
         }
     }
@@ -80,6 +79,4 @@ export class PopUpComponent implements AfterViewInit, OnDestroy {
     public setLessonsProgress(courseLessonProgress: CourseLessonProgress) {
         localStorage.setItem(LESSONS_PROGRESS, JSON.stringify(courseLessonProgress))
     }
-
-
 }

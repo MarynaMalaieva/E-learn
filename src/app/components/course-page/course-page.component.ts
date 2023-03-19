@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Course, ExtendedCourse, Lesson} from "../../models/rest.model";
+import {ExtendedCourse, Lesson} from "../../models/rest.model";
 import {ActivatedRoute} from "@angular/router";
-import {Observable, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import Hls from "hls.js";
 import {DataService} from "../../services/data.service";
 

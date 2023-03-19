@@ -1,10 +1,7 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {Course, ExtendedCourse, Lesson} from "../../models/rest.model";
-import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {Component, Input, OnInit} from '@angular/core';
+import {Lesson} from "../../models/rest.model";
+import {MatDialog} from "@angular/material/dialog";
 import {PopUpComponent} from "../pop-up/pop-up.component";
-import {FormControl} from '@angular/forms';
-import {TooltipPosition} from '@angular/material/tooltip';
-import Hls from "hls.js";
 
 @Component({
     selector: 'app-lesson-card',
@@ -14,16 +11,14 @@ import Hls from "hls.js";
 export class LessonCardComponent implements OnInit {
     @Input() public lesson: Lesson | undefined;
     @Input() public courseId: string | undefined | null;
-    public locked: boolean | undefined;
+    public _locked: boolean | undefined;
 
     constructor(private dialogRef: MatDialog) {
     }
 
-    ngOnInit(): void {
-        this.locked = this.lesson?.status === 'locked';
+    public ngOnInit(): void {
+        this._locked = this.lesson?.status === 'locked';
     }
-
-
 
     public onLessonClick() {
         if (this.lesson?.status === 'unlocked') {
