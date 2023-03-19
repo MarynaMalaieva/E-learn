@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {RestService} from "../../services/rest.service";
 import {MatPaginator} from "@angular/material/paginator";
+import {DataService} from "../../services/data.service";
 
 @Component({
     selector: 'app-feed',
@@ -10,13 +11,12 @@ import {MatPaginator} from "@angular/material/paginator";
 export class FeedComponent {
     public currentPage = 0;
 
-
     @ViewChild(MatPaginator)
     public paginator: MatPaginator | undefined;
 
-    public courses$ = this.rest.getCourses();
+    public courses$ = this.dataService.getCourses();
 
-    constructor(private rest: RestService) {
+    constructor(private dataService: DataService) {
     }
 
 }

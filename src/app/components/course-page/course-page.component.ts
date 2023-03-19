@@ -1,9 +1,9 @@
-import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {RestService} from "../../services/rest.service";
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Course, ExtendedCourse, Lesson} from "../../models/rest.model";
 import {ActivatedRoute} from "@angular/router";
 import {Observable, Subscription} from "rxjs";
 import Hls from "hls.js";
+import {DataService} from "../../services/data.service";
 
 @Component({
     selector: 'app-course-page',
@@ -19,14 +19,14 @@ export class CoursePageComponent implements OnInit, AfterViewInit, OnDestroy {
     private subscription: Subscription | undefined;
     private contentRendered = false;
 
-    constructor(private rest: RestService,
+    constructor(private dataService: DataService,
                 private route: ActivatedRoute) {
     }
 
     public ngOnInit(): void {
         this.courseId = this.route.snapshot.paramMap.get('courseId');
         if (this.courseId) {
-            this.subscription = this.rest.getCourseById(this.courseId)
+            this.subscription = this.dataService.getCourseById(this.courseId)
                 .subscribe(course => {
                     course.lessons = course.lessons.sort(this.sortFunc)
                     this._course = course;

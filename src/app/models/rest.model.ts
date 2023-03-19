@@ -55,3 +55,7 @@ export interface Course {
 export interface Courses {
     courses: Course[];
 }
+
+export interface Token {
+    token: string;
+}
