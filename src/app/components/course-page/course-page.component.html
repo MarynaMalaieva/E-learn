@@ -1,11 +1,11 @@
-<div class="course-page">
+<div *ngIf="_course else loader" class="course-page">
     <div class="course-header">
-        <div class="title">{{_course?.title}}</div>
-        <div class="description"> <b>Description:</b> {{_course?.description}}</div>
+        <div class="title">{{_course.title}}</div>
+        <div class="description"> <b>Description:</b> {{_course.description}}</div>
     </div>
     <div class="content">
         <div class="lessons-cards">
-            <app-lesson-card *ngFor="let lesson of _course?.lessons"
+            <app-lesson-card *ngFor="let lesson of _course.lessons"
                              class="lesson-card"
                              [lesson]='lesson'
                              [courseId]='courseId'
@@ -22,6 +22,9 @@
                    onloadedmetadata="this.muted = true"
             ></video>
         </div>
-
     </div>
 </div>
+
+<ng-template #loader>
+    <mat-spinner class="loader"></mat-spinner>
+</ng-template>
