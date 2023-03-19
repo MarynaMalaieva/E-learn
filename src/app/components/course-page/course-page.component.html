@@ -7,6 +7,7 @@
     <div class="content">
         <div class="lessons-cards">
             <app-lesson-card *ngFor="let lesson of _course?.lessons"
+                             class="lesson-card"
                              [lesson]='lesson'
                              [courseId]='courseId'
             >

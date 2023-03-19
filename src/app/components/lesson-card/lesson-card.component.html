@@ -9,14 +9,11 @@
         <div class="lesson-card-info">
             <div class="lessons-order">{{lesson?.order}}</div>
             <div class="lesson-title">{{lesson?.title}}</div>
-            <div class="icon-lock" *ngIf='locked'>
-                <mat-icon aria-hidden="false" aria-label="Example lock icon" fontIcon="lock"></mat-icon>
-            </div>
-            <div class="icon-play" *ngIf='!locked'>
-                <mat-icon aria-hidden="false" aria-label="Example play circle filled icon"
-                          fontIcon="play_circle_filled">play circle filled
-                </mat-icon>
-            </div>
+            <mat-icon *ngIf='locked' class="icon-lock" aria-hidden="false" aria-label="Example lock icon"
+                      fontIcon="lock"></mat-icon>
+            <mat-icon *ngIf='!locked' class="icon-play" aria-hidden="false" aria-label="Example play circle filled icon"
+                      fontIcon="play_circle_filled">play circle filled
+            </mat-icon>
         </div>
     </div>
 </div>

@@ -17,13 +17,18 @@
         gap: @base-gap;
 
         .lessons-cards {
+            flex: 1;
             display: flex;
             gap: @base-gap;
             flex-direction: column;
+
+            .lesson-card {
+                width: auto;
+            }
         }
 
         .video-container {
-            flex: 1;
+            flex: 1.2;
 
             .video-lesson {
                 display: flex;
