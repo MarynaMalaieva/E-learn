@@ -3,7 +3,14 @@
         <div>{{_course?.title}}</div>
         <div>{{_course?.meta?.slug}}</div>
         <div>{{_course?.description}}</div>
-        <video class="video-lesson" #videoLesson controls autoplay playsinline></video>
+        <video class="video-lesson"
+               #videoLesson
+               controls
+               autoplay
+               playsinline
+               oncanplay="this.play()"
+               onloadedmetadata="this.muted = true"
+        ></video>
     </div>
     <app-lesson-card *ngFor="let lesson of _course?.lessons"
                      [lesson]='lesson'

@@ -1,7 +1,14 @@
 <div class="pop-up">
    <div class="video-lesson-wrapper">
        <div class="lesson-title"> {{data.lesson?.order + '. ' + data.lesson?.title}} </div>
-       <video class="video-lesson" #videoLesson controls autoplay playsinline></video>
+       <video class="video-lesson"
+              #videoLesson
+              controls
+              autoplay
+              playsinline
+              oncanplay="this.play()"
+              onloadedmetadata="this.muted = true"
+       ></video>
    </div>
     <button mat-button  class="close-icon" [mat-dialog-close]="true">
         <mat-icon >close</mat-icon>

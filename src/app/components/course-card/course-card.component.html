@@ -1,7 +1,18 @@
-<div class="course-card" (click)="onCardClick()" (mouseenter)="hover = true" (mouseleave)="hover = false">
+<div class="course-card" (click)="onCardClick()" (mouseenter)="onMouseEnter()" (mouseleave)="hover = false">
     <div class="course-title">{{course?.title}}</div>
     <div class="content">
         <img *ngIf="!hover" class="course-preview" src="{{course?.previewImageLink+'/cover.webp'}}" alt="">
+        <video #videoPreview
+               [hidden]="!hover"
+               class="course-video-preview"
+               autoplay
+               loop
+               controls
+               playsinline
+               muted
+               oncanplay="this.play()"
+               onloadedmetadata="this.muted = true"
+        ></video>
 
         <div class="course-card-info">
             <div class="lessons-count">{{'Number of lessons: '+course?.lessonsCount}}</div>

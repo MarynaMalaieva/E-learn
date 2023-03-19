@@ -49,13 +49,10 @@ export class CoursePageComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     public initPlayer(link: string) {
-        if (this._course?.lessons[0].link) {
+        if (link) {
             this.hls = new Hls();
             this.hls.loadSource(link);
             this.hls.attachMedia(this.video);
-            this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                this.video.play();
-            });
         }
     }
 

@@ -39,9 +39,6 @@ export class PopUpComponent implements AfterViewInit, OnDestroy {
             oldLessonTime && this.setCurrentTime(oldLessonTime);
             this.hls.loadSource(this.data.lesson.link);
             this.hls.attachMedia(this.video);
-            this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                this.video.play();
-            });
             this.timer = window.setInterval(() => {
                 courseLessonsProgress[this.data.courseId] = courseLessonsProgress[this.data.courseId] || {};
                 courseLessonsProgress[this.data.courseId][this.data.lesson?.id] = this.getCurrentTime()

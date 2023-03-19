@@ -10,6 +10,7 @@ import {MatPaginator} from "@angular/material/paginator";
 export class FeedComponent {
     public currentPage = 0;
 
+
     @ViewChild(MatPaginator)
     public paginator: MatPaginator | undefined;
 
