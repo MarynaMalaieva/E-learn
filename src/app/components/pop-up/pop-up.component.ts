@@ -64,10 +64,7 @@ export class PopUpComponent implements AfterViewInit, OnDestroy {
         }
     }
 
-
     public getCurrentTime(): number {
-        console.log(">>> TIME: ", this.video.currentTime);
-        console.log(this.data)
         return this.video.currentTime
     }
 

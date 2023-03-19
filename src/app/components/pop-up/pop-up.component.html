@@ -1,6 +1,12 @@
 <div class="pop-up">
+    <div class="header">
+        <div class="lesson-title"> {{data.lesson?.order + '. ' + data.lesson?.title}} </div>
+        <button mat-button  class="close-icon" [mat-dialog-close]="true">
+            <mat-icon >close</mat-icon>
+        </button>
+    </div>
+
    <div class="video-lesson-wrapper">
-       <div class="lesson-title"> {{data.lesson?.order + '. ' + data.lesson?.title}} </div>
        <video class="video-lesson"
               #videoLesson
               controls
@@ -10,12 +16,8 @@
               onloadedmetadata="this.muted = true"
        ></video>
    </div>
-    <button mat-button  class="close-icon" [mat-dialog-close]="true">
-        <mat-icon >close</mat-icon>
-    </button>
-    <div>
-        Current speed: {{video?.playbackRate}}
+    <div class="speed">
+        Current speed: <b>{{video?.playbackRate}}</b>. To change the speed, use the keys - "6" to increase, "4" to decrease.
     </div>
-    <button (click)="getCurrentTime()">GetTime</button>
 </div>
 
