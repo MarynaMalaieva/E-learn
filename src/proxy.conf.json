@@ -3,5 +3,10 @@
         "target": "http://api.wisey.app",
         "secure": false,
         "changeOrigin": true
+    },
+    "wisey.app/videos/*": {
+        "target": "https://wisey.app",
+        "secure": false,
+        "changeOrigin": true
     }
 }
