@@ -1,5 +1,5 @@
-<div>
-    <div *ngIf="courses$ | async as courses" class="cards">
+<div class="feed">
+    <div *ngIf="courses$ | async as courses else loader" class="cards">
         <div class="cards-wrapper">
             <app-course-card *ngFor="let course of courses.courses.slice(currentPage*10, (currentPage+1)*10)"
                              class="card"
@@ -13,5 +13,7 @@
                        class="mat-paginator paginator">
         </mat-paginator>
     </div>
-
+    <ng-template #loader>
+        <mat-spinner class="loader"></mat-spinner>
+    </ng-template>
 </div>

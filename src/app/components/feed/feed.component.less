@@ -1,17 +1,26 @@
-.cards-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px 35px 20px 35px;
+.feed {
+    .cards-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px 35px 20px 35px;
 
-    .card {
-        min-width: 480px;
-        flex-basis: 0;
-        flex-grow: 1;
+        .card {
+            min-width: 480px;
+            flex-basis: 0;
+            flex-grow: 1;
+        }
     }
-}
 
-.paginator {
-    position: sticky;
-    bottom: 0;
+    .paginator {
+        position: sticky;
+        bottom: 0;
+    }
+
+    .loader {
+        position: absolute;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+        top: 35vh;
+    }
 }
