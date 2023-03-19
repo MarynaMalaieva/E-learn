@@ -11,12 +11,19 @@ import Hls from "hls.js";
     templateUrl: './lesson-card.component.html',
     styleUrls: ['./lesson-card.component.less']
 })
-export class LessonCardComponent {
+export class LessonCardComponent implements OnInit {
     @Input() public lesson: Lesson | undefined;
     @Input() public courseId: string | undefined | null;
+    public locked: boolean | undefined;
 
     constructor(private dialogRef: MatDialog) {
     }
+
+    ngOnInit(): void {
+        this.locked = this.lesson?.status === 'locked';
+    }
+
+
 
     public onLessonClick() {
         if (this.lesson?.status === 'unlocked') {

@@ -1,21 +1,24 @@
-<div class="lesson-card" (click)="onLessonClick()" matTooltip="This lesson is locked!" matTooltipDisabled="{{lesson?.status !== 'locked'}}">
-
+<div class="lesson-card"
+     (click)="onLessonClick()"
+     matTooltip="This lesson is locked!"
+     [matTooltipDisabled]="!locked"
+     [ngClass]="{'locked': locked}"
+>
     <div class="content">
         <img class="lesson-preview" src="{{lesson?.previewImageLink + '/lesson-' + lesson?.order + '.webp'}}" alt="">
         <div class="lesson-card-info">
             <div class="lessons-order">{{lesson?.order}}</div>
             <div class="lesson-title">{{lesson?.title}}</div>
-            <div class="icon-lock" *ngIf='lesson?.status === "locked"'  >
+            <div class="icon-lock" *ngIf='locked'>
                 <mat-icon aria-hidden="false" aria-label="Example lock icon" fontIcon="lock"></mat-icon>
-<!--                <img src="assets/icons/lock.svg" alt="">-->
             </div>
-            <div class="icon-play" *ngIf='lesson?.status !== "locked"' >
-                <mat-icon aria-hidden="false" aria-label="Example play circle filled icon" fontIcon="play_circle_filled">play circle filled</mat-icon>
-<!--                <img src="assets/icons/play.svg" alt="">-->
+            <div class="icon-play" *ngIf='!locked'>
+                <mat-icon aria-hidden="false" aria-label="Example play circle filled icon"
+                          fontIcon="play_circle_filled">play circle filled
+                </mat-icon>
             </div>
         </div>
     </div>
-
 </div>
 
 
