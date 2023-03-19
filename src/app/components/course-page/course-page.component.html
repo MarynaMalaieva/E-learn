@@ -1,10 +1,10 @@
-<div *ngIf="_course else loader" class="course-page">
-    <div class="course-header">
+<div class="course-page">
+    <div *ngIf="_course" class="course-header">
         <div class="title">{{_course.title}}</div>
-        <div class="description"> <b>Description:</b> {{_course.description}}</div>
+        <div class="description"><b>Description:</b> {{_course.description}}</div>
     </div>
     <div class="content">
-        <div class="lessons-cards">
+        <div *ngIf="_course" class="lessons-cards">
             <app-lesson-card *ngFor="let lesson of _course.lessons"
                              class="lesson-card"
                              [lesson]='lesson'
@@ -12,7 +12,9 @@
             >
             </app-lesson-card>
         </div>
-        <div class="video-container">
+        <div class="video-container"
+             [hidden]="!_course"
+        >
             <video class="video-lesson"
                    #videoLesson
                    controls
@@ -25,6 +27,4 @@
     </div>
 </div>
 
-<ng-template #loader>
-    <mat-spinner class="loader"></mat-spinner>
-</ng-template>
+<mat-spinner *ngIf="!_course" class="loader"></mat-spinner>
