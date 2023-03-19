@@ -1,14 +1,78 @@
+@icon-size: 40px;
+
 .course-card {
     width: 100%;
     height: 100%;
     border: 1px solid #d5d5d5;
+    border-radius: 20px;
+    color: #2a242e;
+    cursor: pointer;
+
+    .course-title {
+        font-size: 22px;
+        font-weight: 500;
+        color: #2a242e;
+        margin: 15px;
+    }
 
     .content {
         display: flex;
         flex-direction: row;
+        position: relative;
+        gap: 10px;
+        width: 100%;
+        height: 100%;
+
+        .media {
+            width: 45%;
+            height: 200px;
+            margin: 15px 10px;
+            display: flex;
+
+            .course-video-preview {
+                height: 100%;
+                width: 100%;
+                align-self: center;
+            }
+
+            .course-preview {
+                width: 100%;
+                align-self: center;
+            }
+
+        }
+
+        .course-card-info {
+            .skills {
+                font-size: 16px;
+                ul {
+                    margin: 0;
+
+                }
+            }
+
+            .lessons-count {
+                font-size: 16px;
+                padding-top: 10px;
+            }
+
+
+        }
+        .rating {
+            position: absolute;
+            font-size: 24px;
+            right: 85px;
+            top: 65%;
+        }
+        .icon {
+            position: absolute;
+            right: 0;
+            top: 60%;
+            //transform: translate(-50%, -50%);
+            font-size: @icon-size;
+            height: @icon-size;
+            width: 80px;
+        }
     }
 
-    .course-preview {
-        max-height: 100px;
-    }
 }

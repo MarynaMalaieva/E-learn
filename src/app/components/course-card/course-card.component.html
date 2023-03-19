@@ -1,33 +1,36 @@
 <div class="course-card" (click)="onCardClick()" (mouseenter)="onMouseEnter()" (mouseleave)="hover = false">
     <div class="course-title">{{course?.title}}</div>
     <div class="content">
-        <img *ngIf="!hover" class="course-preview" src="{{course?.previewImageLink+'/cover.webp'}}" alt="">
-        <video #videoPreview
-               [hidden]="!hover"
-               class="course-video-preview"
-               autoplay
-               loop
-               controls
-               playsinline
-               muted
-               oncanplay="this.play()"
-               onloadedmetadata="this.muted = true"
-        ></video>
+       <div class="media">
+           <img *ngIf="!hover" class="course-preview" src="{{course?.previewImageLink+'/cover.webp'}}" alt="">
+           <video #videoPreview
+                  [hidden]="!hover"
+                  class="course-video-preview"
+                  autoplay
+                  loop
+                  playsinline
+                  muted
+                  oncanplay="this.play()"
+                  onloadedmetadata="this.muted = true"
+           ></video>
+       </div>
 
         <div class="course-card-info">
-            <div class="lessons-count">{{'Number of lessons: '+course?.lessonsCount}}</div>
+            <div class="lessons-count"> <b>Number of lessons: </b>{{course?.lessonsCount}}</div>
             <div class="skills">
-                <div>Skills:</div>
+                <div><b>Skills:</b></div>
                 <ul>
                    <li *ngFor="let skill of course?.meta?.skills">
                        {{skill}}
                    </li>
                 </ul>
             </div>
+
         </div>
+        <mat-icon class="icon">star</mat-icon>
+        <div class="rating">
+
+            {{course?.rating }}</div>
     </div>
-    <div class="rating">
-        <mat-icon>star</mat-icon>
-<!--        <img src="assets/icons/star.png" alt="">-->
-        {{'Rating: '+course?.rating }}</div>
+
 </div>
